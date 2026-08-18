@@ -1,0 +1,8 @@
+{
+  "name": "entitlements-ui",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "build:cf": "echo 'Use @ui5/cli (ui5 build) in a real build; static webapp copied as-is for MTA content deploy'"
+  }
+}

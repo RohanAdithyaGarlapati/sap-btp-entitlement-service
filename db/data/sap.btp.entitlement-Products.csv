@@ -1,0 +1,6 @@
+ID;code;name;description;category;metric;unit;active
+11111111-1111-1111-1111-111111111101;hana-cloud;SAP HANA Cloud;In-memory database as a service;Database;memory;GB;true
+11111111-1111-1111-1111-111111111102;app-runtime;Cloud Foundry Application Runtime;Managed runtime for business applications;Runtime;memory;GB;true
+11111111-1111-1111-1111-111111111103;object-store;Object Store;Cloud object storage for blobs and backups;Storage;quantity;GB;true
+11111111-1111-1111-1111-111111111104;integration-suite;SAP Integration Suite;Enterprise integration and API management;Integration;quantity;messages;true
+11111111-1111-1111-1111-111111111105;ai-core;SAP AI Core;Runtime for training and serving AI models;AI;quantity;hours;true

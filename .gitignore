@@ -1,0 +1,13 @@
+node_modules/
+gen/
+mta_archives/
+*.mtar
+.*_mta_build_tmp/
+*.db
+*.db-shm
+*.db-wal
+*.sqlite
+.env
+dist/
+*.log
+.DS_Store

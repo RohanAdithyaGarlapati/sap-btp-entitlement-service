@@ -1,0 +1,67 @@
+{
+  "oauth2-configuration": {
+    "redirect-uris": [
+      "https://0516d6c8trial-dev-entitlement-approuter.cfapps.us10-001.hana.ondemand.com/**",
+      "https://*.cfapps.us10-001.hana.ondemand.com/**"
+    ]
+  },
+  "xsappname": "sap-btp-entitlement-service",
+  "tenant-mode": "dedicated",
+  "description": "Security configuration for the BTP entitlement service",
+  "scopes": [
+    {
+      "name": "$XSAPPNAME.Viewer",
+      "description": "Read entitlements and consumption"
+    },
+    {
+      "name": "$XSAPPNAME.Manager",
+      "description": "Manage entitlements and book consumption"
+    }
+  ],
+  "attributes": [
+    {
+      "name": "subaccount",
+      "description": "Subaccount the user may access",
+      "valueType": "string"
+    }
+  ],
+  "role-templates": [
+    {
+      "name": "EntitlementViewer",
+      "description": "View entitlements, products and consumption",
+      "scope-references": [
+        "$XSAPPNAME.Viewer"
+      ],
+      "attribute-references": [
+        "subaccount"
+      ]
+    },
+    {
+      "name": "EntitlementManager",
+      "description": "Full management of entitlements and consumption",
+      "scope-references": [
+        "$XSAPPNAME.Viewer",
+        "$XSAPPNAME.Manager"
+      ],
+      "attribute-references": [
+        "subaccount"
+      ]
+    }
+  ],
+  "role-collections": [
+    {
+      "name": "EntitlementViewer",
+      "description": "Entitlement Viewer",
+      "role-template-references": [
+        "$XSAPPNAME.EntitlementViewer"
+      ]
+    },
+    {
+      "name": "EntitlementManager",
+      "description": "Entitlement Manager",
+      "role-template-references": [
+        "$XSAPPNAME.EntitlementManager"
+      ]
+    }
+  ]
+}

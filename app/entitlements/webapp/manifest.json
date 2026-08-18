@@ -1,0 +1,94 @@
+{
+  "_version": "1.59.0",
+  "sap.app": {
+    "id": "sap.btp.entitlement.entitlements",
+    "type": "application",
+    "title": "Entitlement Management",
+    "description": "Manage BTP entitlements, quotas and consumption",
+    "applicationVersion": {
+      "version": "1.0.0"
+    },
+    "dataSources": {
+      "mainService": {
+        "uri": "/odata/v4/entitlement/",
+        "type": "OData",
+        "settings": {
+          "odataVersion": "4.0",
+          "localUri": "localService/metadata.xml"
+        }
+      }
+    }
+  },
+  "sap.ui": {
+    "technology": "UI5",
+    "deviceTypes": {
+      "desktop": true,
+      "tablet": true,
+      "phone": true
+    }
+  },
+  "sap.ui5": {
+    "dependencies": {
+      "minUI5Version": "1.120.0",
+      "libs": {
+        "sap.fe.templates": {}
+      }
+    },
+    "models": {
+      "": {
+        "dataSource": "mainService",
+        "settings": {
+          "synchronizationMode": "None",
+          "operationMode": "Server",
+          "autoExpandSelect": true,
+          "earlyRequests": true
+        }
+      }
+    },
+    "routing": {
+      "routes": [
+        {
+          "pattern": ":?query:",
+          "name": "EntitlementsList",
+          "target": "EntitlementsList"
+        },
+        {
+          "pattern": "Entitlements({key}):?query:",
+          "name": "EntitlementsObjectPage",
+          "target": "EntitlementsObjectPage"
+        }
+      ],
+      "targets": {
+        "EntitlementsList": {
+          "type": "Component",
+          "id": "EntitlementsList",
+          "name": "sap.fe.templates.ListReport",
+          "options": {
+            "settings": {
+              "entitySet": "Entitlements",
+              "variantManagement": "Page",
+              "initialLoad": true,
+              "navigation": {
+                "Entitlements": {
+                  "detail": {
+                    "route": "EntitlementsObjectPage"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "EntitlementsObjectPage": {
+          "type": "Component",
+          "id": "EntitlementsObjectPage",
+          "name": "sap.fe.templates.ObjectPage",
+          "options": {
+            "settings": {
+              "entitySet": "Entitlements"
+            }
+          }
+        }
+      }
+    }
+  }
+}
